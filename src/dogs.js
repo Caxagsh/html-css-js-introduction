@@ -5,7 +5,8 @@ const getLiElements = document.querySelector(".thumbnails-list")
 const detailsImage = document.querySelector(".details-image");
 const detailsTitle = document.querySelector(".details-title");
 const detailsContainer = document.querySelector(".details-container");
-
+getLiElements.innerHTML += getAnchors();
+const anchorElements = document.querySelectorAll(".thumbnails-anchor");
 const mainElement = document.querySelector(".main-class");
 const hideButtonElement = document.getElementById("hide-button");
 const audio = document.querySelector('audio');
@@ -44,9 +45,9 @@ function setDetails(anchor) {
 function getDeteilTitle (string){
     let str = string.split('');
     for(let i = 0; i < str.length; i++){
-        if(i > 50 && str[i] === " "){
+        if(i > 50 && string.fromCharCode(str[i]) < (string.fromCharCode(65))){
             let res = str.slice(0, i);
-            return res.join('');
+            return `${res.join('')}... `;
         }
         
     }
@@ -76,8 +77,7 @@ function getAnchors() {
     return `${getListItems()}`
 }
 
-getLiElements.innerHTML += getAnchors();
-const anchorElements = document.querySelectorAll(".thumbnails-anchor")
+
 
 for (let i = 0; i < anchorElements.length; i++) {
     anchorElements[i].addEventListener("click",function(){
