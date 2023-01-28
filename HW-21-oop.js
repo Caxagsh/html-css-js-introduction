@@ -80,9 +80,7 @@ class Company {
         //TODO
         //returns array of employee objects having field "country" equaled to a given country
        
-        // const res = (this.#employees).reduce(function(acc, empl){
-        //     empl.country === country ? acc += empl : acc;
-        // }, [])
+        
         const res =Object.values(this.#employees);
         return res.reduce((acc, empl) => {
             if (empl.address.country === country) acc.push(empl);
@@ -147,39 +145,3 @@ const salary1 = comp.getEmployeesBySalaries(-1, -1);
 const salary2 = comp.getEmployeesBySalaries(12000, 22000);
 const salary3 = comp.getEmployeesBySalaries(-1, 20000);
 const salary4 = comp.getEmployeesBySalaries(15000, -1);
-// console.log(add.addEmployee(empl));
-// console.log(add.addEmployee(empl1));
-// console.table(Company.this.#employees);
-// const add1 = new Company();
-// const empl1 = createEmployee(126, "Pavel", 2003, 12000, "Lod", "Israel");
-// console.log(add1.addEmployee(empl1));
-
-
-
-
-
-// function createEmployee(id, name, birthYear, salary, city, country) {
-//     return {id, name, birthYear, salary, address: {city, country}}
-// }
-// class Company {
-//     #employees //object key: <id value>, value: reference to Employee object
-//     constructor(id, name, birthYear, salary, city, country) {
-//         this.#employees = {};
-//     }
-//     addEmployee(empl) {
-        
-//         //adds empl into #employees object
-//         //returns true if added new employee object
-//         //returns false if employee with a given id value already exists
-//         if(Company.this.#employees.id === empl.id){
-//             return false;
-//         }else{
-//             this.#employees = empl;
-//             return true;
-//         }
-//     }
-// }
-
-// adds empl into #employees object
-// returns true if added new employee object
-// returns false if employee with a given id value already exists
