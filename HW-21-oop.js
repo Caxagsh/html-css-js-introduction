@@ -92,6 +92,12 @@ class Company {
     getEmployeesByAge(age) {
         //TODO
         //returns array of employee objects with a given age
+        const date = new Date();
+        const res = Object.values(this.#employees);
+        return res.reduce((acc, empl) =>{
+            if(date.getFullYear() - empl.birthYear === age) acc.push(empl);
+            return acc;
+        }, [] )
     }
     getEmployeesBySalaries(salryFrom, salryTo) {
         //TODO
@@ -99,7 +105,25 @@ class Company {
         //if salaryFrom < 0, then get employees with salary less or equal salaryTo
         //if salaryTo , 0, then get employees with salary greater or equal salaryFrom
         //if salaryFrom < 0 && salaryTo < 0, then get all employees
+        if(salryFrom < 0 && salryTo < 0 ){
+            return this.#employees;
+        }
+        const arrEmpl = Object.values(this.#employees);
+        const res = [];
+        arrEmpl.forEach(empl => {
+            if(empl.salary > salryFrom && empl.salary < salryTo){
+                res.push(empl);
+            }else
+            if(salryFrom < 0){
+                empl.salary <= salryTo ? res.push(empl) : false;
+            } else
+            if(salryTo < 0){
+                empl.salary >= salryFrom ? res.push(empl) : false;
+            }
+        });
+        return res;
     }
+    
 }
 const emp1 = createEmployee(124, "Pavel", 2003, 12000, "Lod", "Israel");
 const emp7 = createEmployee(126, "Pavel", 2003, 12000, "Lod", "Israel");
@@ -107,18 +131,22 @@ const emp2 = createEmployee(127, "John", 2000, 15000, "New York", "USA");
 const emp3 = createEmployee(128, "Jane", 2005, 18000, "London", "UK");
 const emp4 = createEmployee(129, "Bob", 2002, 20000, "Paris", "France");
 const emp5 = createEmployee(130, "Sara", 2001, 22000, "Berlin", "Germany");
-const emp6 = createEmployee(125, "Pavel", 2003, 12000, "Lod", "Israel");
-const add = new Company();
-add.addEmployee(emp1);
-add.addEmployee(emp7);
-add.addEmployee(emp2);
-add.addEmployee(emp3);
-add.addEmployee(emp4);
-add.addEmployee(emp5);
-add.addEmployee(emp6);
-add.removeEmployee(126);
-const country = add.getEmployeesCountry("Israel");
-
+const emp6 = createEmployee(125, "Pavel", 2003, 35000, "Lod", "Israel");
+const comp = new Company();
+comp.addEmployee(emp1);
+comp.addEmployee(emp7);
+comp.addEmployee(emp2);
+comp.addEmployee(emp3);
+comp.addEmployee(emp4);
+comp.addEmployee(emp5);
+comp.addEmployee(emp6);
+comp.removeEmployee(126);
+const country = comp.getEmployeesCountry("Israel");
+comp.getEmployeesByAge(22);
+const salary1 = comp.getEmployeesBySalaries(-1, -1);
+const salary2 = comp.getEmployeesBySalaries(12000, 22000);
+const salary3 = comp.getEmployeesBySalaries(-1, 20000);
+const salary4 = comp.getEmployeesBySalaries(15000, -1);
 // console.log(add.addEmployee(empl));
 // console.log(add.addEmployee(empl1));
 // console.table(Company.this.#employees);
