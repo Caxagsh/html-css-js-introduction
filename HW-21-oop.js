@@ -48,10 +48,12 @@ class Company {
         
         this.#employees = {};
     }
+
+    //returns true if added new employee object
+        //returns false if employee with a given id value already exists
     addEmployee(empl) {
         //adds empl into #employees object
-        //returns true if added new employee object
-        //returns false if employee with a given id value already exists
+        
 
         if(this.#employees[empl.id]){
             return false;
