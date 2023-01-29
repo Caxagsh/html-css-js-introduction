@@ -1,42 +1,4 @@
-// const rectangle = {width: 20, height: 10, square: function () {
-//     return this.width * this.height;
-// },perimeter: function()  {
-//     return this.width * 2 + this.height * 2
-// }}
-// // this.width = 100;
-// // this.height = 200;
-// // console.log(this)
-//  console.log(rectangle.square());
-//  console.log(rectangle.perimeter());
- 
-// class Rectangle {
-//     #width;
-//     #height;
-//     constructor(width, height) {
-//         this.#height = height;
-//         this.#width = width;
-//     }
-//     square() {
-//         return this.#width * this.#height;
-//     }
-//     perimeter() {
-//         return this.#width * 2 + this.#height *2
-//     }
-// }
-// function Rectangle(width, height) {
-//     this.width = width;
-//     this.height = height;
-// }
-// Rectangle.prototype.square = function() {
-//     return this.width * this.height;
-// }
-// const rectangle1 = new Rectangle(3, 4);
-// console.log(rectangle1.square());
-// Rectangle.prototype.square = function() {
-//     return "kuku"
-// }
-// console.log(rectangle1.square());
-//console.log(rectangle1.perimeter());
+
 /* HW #21 */
 // Employe structure and function createEmployee() taken from previous HW
 function createEmployee(id, name, birthYear, salary, city, country) {
@@ -65,7 +27,6 @@ class Company {
         
     }
     removeEmployee(id) {
-        //TODO
         //removes employee with a given id from #employees object
         //returns true if removed
         //returns false if employee with the id doesn't exist
@@ -77,10 +38,7 @@ class Company {
         }
     }
     getEmployeesCountry(country) {
-        //TODO
         //returns array of employee objects having field "country" equaled to a given country
-       
-        
         const res =Object.values(this.#employees);
         return res.reduce((acc, empl) => {
             if (empl.address.country === country) acc.push(empl);
@@ -88,7 +46,6 @@ class Company {
         }, []);
     }
     getEmployeesByAge(age) {
-        //TODO
         //returns array of employee objects with a given age
         const date = new Date();
         const res = Object.values(this.#employees);
@@ -98,7 +55,6 @@ class Company {
         }, [] )
     }
     getEmployeesBySalaries(salryFrom, salryTo) {
-        //TODO
         //returns array of employee objects with salary in a given closed range [salaryFrom, salaryTo]
         //if salaryFrom < 0, then get employees with salary less or equal salaryTo
         //if salaryTo , 0, then get employees with salary greater or equal salaryFrom
