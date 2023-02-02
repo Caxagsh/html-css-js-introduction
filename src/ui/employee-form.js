@@ -44,6 +44,7 @@ export class EmployeeForm {
         this.#countriesElement.addEventListener("change", () => this.setCities())
     }
     setCountries() {
+        
         this.#countriesElement.innerHTML = Object.keys(employeeConfig.countries)
         .map(country => `<option value="${country}">${country}</option>`)
     }
@@ -52,6 +53,8 @@ export class EmployeeForm {
         .map(city => `<option value="${city}">${city}</option>`)
     }
     addFormHandler(handlerFun) {
+        let msg;
+        
         this.#formElement.addEventListener('submit', (event) => {
     event.preventDefault(); //canceling default handler of "submit"
     const employeeData = Array.from(this.#inputElements)
@@ -59,7 +62,11 @@ export class EmployeeForm {
         res[inputElement.name] = inputElement.value;
         return res;
     }, {});
-   handlerFun(employeeData);
+
+    const msg = handlerFun(employeeData);
+    if(msg){
+          alert(msg);
+      }
 })
     }
 }

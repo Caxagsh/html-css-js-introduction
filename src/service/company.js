@@ -13,15 +13,23 @@ export class Company {
         //adds empl into #employees object
         //returns true if added new employee object
         //returns false if employee with a given id value already exists
+        let res;
         const id = getRandomNumber(employeeConfig.minId, employeeConfig.maxId);
-        
-        let res = false;
-        if (!this.#employees[empl.id]) {
+        if(empl.birthYear < employeeConfig.maxBirtYear || empl.birthYear  > employeeConfig.minBirtYear){
+            res = ` Birth Year must be in range ${employeeConfig.maxBirtYear} - ${employeeConfig.minBirtYear} `
+        }else if(empl.salary < employeeConfig.minSalary || empl.salary > employeeConfig.maxSalary){
+            res = `Salary value must be in range ${employeeConfig.minSalary} - ${employeeConfig.maxSalary}`
+        }else if(this.#employees[empl.id]){
+             res =  `This id already exists ${id}`;
+        }else{
             this.#employees[empl.id] = empl;
-            res = true;
         }
-        return res;
-    }
+        
+        return res;   
+        }
+
+        
+    
     removeEmployee(id) {
         //removes employee with a given id from #employees object
         //returns true if removed

@@ -10,7 +10,7 @@ function addEmployee(employeeData) {
     const employee = createEmployee( employeeData.name,
         +employeeData.birthYear, +employeeData.salary,
         employeeData.city, employeeData.country);
-    company.addEmployee(employee);
-    console.log(employee)
+    return company.addEmployee(employee);
+    // console.log(employee)
 }
 employeeForm.addFormHandler(addEmployee)
