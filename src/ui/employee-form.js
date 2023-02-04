@@ -5,12 +5,13 @@ export class EmployeeForm {
     #citiesElement;
     #countriesElement;
     #inputElements
+    #parentFormElement
     constructor(idParentForm) {
-        const parentFormElement = document.getElementById(idParentForm);
-        if (!parentFormElement) {
+        this.#parentFormElement = document.getElementById(idParentForm);
+        if (!this.#parentFormElement) {
             throw `wrong parent id ${idParentForm}`;
         }
-        parentFormElement.innerHTML = `
+        this.#parentFormElement.innerHTML = `
         <form id="employee-form">
             <input required name="name" placeholder="enter employee name" class="form-input">
             <input required name="birthYear" type="number" placeholder="enter birthYear" class="form-input">
@@ -42,9 +43,9 @@ export class EmployeeForm {
         this.setCountries();
         this.setCities();
         this.#countriesElement.addEventListener("change", () => this.setCities())
+        this.#parentFormElement.style.display = "none";
     }
     setCountries() {
-        
         this.#countriesElement.innerHTML = Object.keys(employeeConfig.countries)
         .map(country => `<option value="${country}">${country}</option>`)
     }
@@ -53,8 +54,6 @@ export class EmployeeForm {
         .map(city => `<option value="${city}">${city}</option>`)
     }
     addFormHandler(handlerFun) {
-        let msg;
-        
         this.#formElement.addEventListener('submit', (event) => {
     event.preventDefault(); //canceling default handler of "submit"
     const employeeData = Array.from(this.#inputElements)
@@ -62,11 +61,17 @@ export class EmployeeForm {
         res[inputElement.name] = inputElement.value;
         return res;
     }, {});
-
-    const msg = handlerFun(employeeData);
-    if(msg){
-          alert(msg);
-      }
+   const message = handlerFun(employeeData);
+   if (message) {
+    alert(message);
+   } else {
+    this.#formElement.reset();
+   }
 })
     }
+    getParentFormElemen(){
+        const  elem = this.#parentFormElement;
+        return elem;
+    }
 }
+
