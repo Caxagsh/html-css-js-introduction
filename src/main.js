@@ -30,4 +30,4 @@ function addEmployee(employeeData) {
     
 }
 employeeForm.addFormHandler(addEmployee);
-buttonAddElement.showInput(employeeForm.getParentFormElemen(), tableEmployees.getParentTableElement());
+buttonAddElement.showFormOrTable(employeeForm.getFormElemen(), tableEmployees.getTableElement());

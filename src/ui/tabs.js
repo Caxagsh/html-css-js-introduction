@@ -7,7 +7,7 @@ export class Tabs{
     #formButtonColor;
     #tableButtonColor;
 
-constructor (parenID, ){
+constructor (parenID){
     const parentButtonElement = document.getElementById(parenID);
     parentButtonElement.innerHTML = `<button id="add-button">Add Employee</button>`;
     parentButtonElement.innerHTML += `<button id="show-button">Show Employee</button>`;
@@ -16,11 +16,10 @@ constructor (parenID, ){
     this.#showButton = document.getElementById("show-button");
     this.#formButtonColor = document.getElementById("add-button");
     this.#tableButtonColor = document.getElementById("show-button");
-    // this.#formButtonColor = document.getElementsByTagName("button");
 
 }
 
-showInput(formElement, tableElement){
+showFormOrTable(formElement, tableElement){
    this.#addButton.addEventListener("click", (event) =>{
     formElement.style.display = "block";
     tableElement.style.display = "none";
@@ -32,7 +31,7 @@ showInput(formElement, tableElement){
     tableElement.style.display = "block";
     this.#tableButtonColor.style.backgroundColor = "rgb(25, 137, 228)";
     this.#formButtonColor.style.backgroundColor = "white";
-   })
+   });
 }
 
 

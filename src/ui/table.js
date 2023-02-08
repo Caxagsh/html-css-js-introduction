@@ -27,7 +27,7 @@ export class Table {
     addRow(object){
         this.#tbodyElement.innerHTML += getRow(object, this.#schema);
     }
-    getParentTableElement(){
+    getTableElement(){
         const elem = this.#parentElement;
         return elem;
     }

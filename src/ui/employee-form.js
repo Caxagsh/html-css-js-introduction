@@ -69,7 +69,7 @@ export class EmployeeForm {
    }
 })
     }
-    getParentFormElemen(){
+    getFormElemen(){
         const  elem = this.#parentFormElement;
         return elem;
     }
