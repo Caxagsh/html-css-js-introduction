@@ -1,33 +1,22 @@
-import { Company, createEmployee } from "./service/company.js";
-import { EmployeeForm } from "./ui/employee-form.js";
-import { Table } from "./ui/table.js";
-import { Tabs } from "./ui/tabs.js";
-
-const schema = [
-    {columnName: 'Employee ID', fieldName: 'id'},
-    {columnName: 'Name', fieldName: 'name'},
-    {columnName: "Birth Year", fieldName: 'birthYear'},
-    {columnName: "Salary (NIS)", fieldName: 'salary'},
-    {columnName: "Country", fieldName: 'country'},
-    {columnName: "City", fieldName: 'city'}
-]
-const company = new Company();
-const employeeForm = new EmployeeForm("form-section");
-const tableEmployees = new Table("table-section", "Employees", schema);
-const buttonAddElement = new Tabs("buttons-section");
-
-function addEmployee(employeeData) {
+import { DataForm } from "./ui/Input - data - form.js";
+import { VideoPlayer } from "./ui/Video - player.js";
+import { sleep } from "./utils/sleep.js";
+// const TIMEOUT = 5000;
+// // const promise = sleep(TIMEOUT);
+// // promise.then(() => console.log(`after ${TIMEOUT/1000} seconds`));
+// // 
+//  const fun = async () => {
    
-    const employee = createEmployee(employeeData.name,
-        +employeeData.birthYear, +employeeData.salary,
-        employeeData.city, employeeData.country);
-        const res = company.addEmployee(employee);
-        if (!res.message) {
-            employeeData.id = res.id;
-            tableEmployees.addRow(employeeData);
-        }
-        return res.message
+// await sleep(TIMEOUT);
+// console.log(`after ${TIMEOUT/1000} seconds`)
+// }
+// fun();
+// console.log(`waiting for ${TIMEOUT/1000} seconds`)
+// console.log("*****************************************")
+
+const dataForm = new DataForm("form-section");
+const videoPlayer = new VideoPlayer("player-section");
+
     
-}
-employeeForm.addFormHandler(addEmployee);
-buttonAddElement.showFormOrTable(employeeForm.getFormElemen(), tableEmployees.getTableElement());
+
+dataForm.addHandler(sleep);
