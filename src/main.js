@@ -19,4 +19,4 @@ const videoPlayer = new VideoPlayer("player-section");
 
     
 
-dataForm.addHandler(sleep);
+dataForm.addHandler(videoPlayer);
