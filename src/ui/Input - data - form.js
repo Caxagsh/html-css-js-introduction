@@ -3,7 +3,7 @@ import { sleep } from "../utils/sleep.js";
 import { VideoPlayer } from "./Video - player.js";
 
 export class DataForm {
-    #formElement;
+    
     #videoLinksElement;
     #inputElement;
     #button;
@@ -36,7 +36,7 @@ export class DataForm {
         `
         this.#formElement = document.getElementById("player-form");
         this.#videoLinksElement = document.getElementById("videoLinks");
-        this.#inputElement = document.getElementById("input");
+        this.#inputElement = document.getElementById("inptimeout");
         this.setVideoLinks();
         this.#button = document.getElementById("playbutton");
         
@@ -50,10 +50,11 @@ export class DataForm {
     addHandler(videoPlayer) {
         this.#button.addEventListener("click", async (event) => {
    
-            const timeOut = document.getElementById("inptimeout").value * 1000;
-            const selectValue = document.getElementById("videoLinks").value;
+            
+            const timeOut = this.#inputElement.value * 1000
+            const selectValue = this.#videoLinksElement.value;
             event.preventDefault();
-            // videoPlayer.setUrl(selectValue)
+            videoPlayer.setUrl(selectValue)
             videoPlayer.start();
             await sleep(timeOut);
             videoPlayer.stop();
