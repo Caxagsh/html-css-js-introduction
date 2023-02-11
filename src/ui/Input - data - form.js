@@ -3,7 +3,7 @@ import { sleep } from "../utils/sleep.js";
 import { VideoPlayer } from "./Video - player.js";
 
 export class DataForm {
-    
+    #formElement;
     #videoLinksElement;
     #inputElement;
     #button;
@@ -33,7 +33,7 @@ export class DataForm {
     
 
         </form>
-        `
+        `;
         this.#formElement = document.getElementById("player-form");
         this.#videoLinksElement = document.getElementById("videoLinks");
         this.#inputElement = document.getElementById("inptimeout");
